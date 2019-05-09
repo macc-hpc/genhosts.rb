@@ -1,0 +1,6 @@
+<% @hosts.select { |h| h.hostname.start_with?('c') }.each do |host| %>
+host <%= host.hostname %> {
+    hardware ethernet <%= host.mac.downcase %>;
+    fixed-address <%= host.address %>;
+}
+<% end %>

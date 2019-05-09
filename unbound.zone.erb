@@ -1,0 +1,5 @@
+local-zone: "bob.macc.uminho.pt." transparent
+
+<%- @hosts.each do |host| -%>
+local-data: "<%= host.hostname %>.bob.macc.uminho.pt     IN A <%= host.address %>"
+<% end %>
