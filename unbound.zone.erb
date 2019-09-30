@@ -1,5 +1,9 @@
-local-zone: "bob.macc.uminho.pt." transparent
+local-zone: "bob.macc.fct.pt" transparent
 
 <%- @hosts.each do |host| -%>
-local-data: "<%= host.hostname %>.bob.macc.uminho.pt     IN A <%= host.address %>"
+local-data: "<%= host.hostname %>.bob.macc.fct.pt     IN A <%= host.address %>"
+<% end %>
+
+<%- @hosts.select { |host| host.hostname.start_with?('c') }.each do |host| -%>
+local-data: "_metrics._tcp.bob.macc.fct.pt.     IN SRV 10 0 9100 <%= host.hostname %>.bob.macc.fct.pt."
 <% end %>
