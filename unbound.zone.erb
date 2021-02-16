@@ -7,3 +7,7 @@ local-data: "<%= host.hostname %>.bob.macc.fct.pt     IN A <%= host.address %>"
 <%- @hosts.select { |host| host.hostname.start_with?('c') }.each do |host| -%>
 local-data: "_metrics._tcp.bob.macc.fct.pt.     IN SRV 10 0 9100 <%= host.hostname %>.bob.macc.fct.pt."
 <% end %>
+
+<%- @hosts.select { |host| host.hostname.start_with?('c') }.each do |host| -%>
+local-data-ptr: "<%= host.address %>     <%= host.hostname %>.bob.macc.fct.pt"
+<% end %>
